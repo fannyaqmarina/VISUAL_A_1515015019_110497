@@ -24,9 +24,9 @@ private DefaultTableModel model;
     }
 public void InitTable(){
     model = new DefaultTableModel();
-        model.addColumn("NIM");
         model.addColumn("NAMA");
-        model.addColumn("ANGKATAN");
+        model.addColumn("NO.TLP");
+        model.addColumn("KOTA ASAL");
         tabel.setModel(model);
 }
     /**
@@ -43,9 +43,9 @@ public void InitTable(){
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        nim = new javax.swing.JTextField();
-        nama = new javax.swing.JTextField();
-        angkatan = new javax.swing.JComboBox();
+        Nama = new javax.swing.JTextField();
+        tlp = new javax.swing.JTextField();
+        asal = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabel = new javax.swing.JTable();
         tambah = new javax.swing.JButton();
@@ -77,21 +77,21 @@ public void InitTable(){
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("KG Second Chances Solid", 0, 11)); // NOI18N
-        jLabel1.setText("NIM");
+        jLabel1.setText("NAMA");
 
         jLabel2.setFont(new java.awt.Font("KG Second Chances Solid", 0, 11)); // NOI18N
-        jLabel2.setText("NAMA");
+        jLabel2.setText("NO.TLP");
 
         jLabel3.setFont(new java.awt.Font("KG Second Chances Solid", 0, 11)); // NOI18N
-        jLabel3.setText("ANGKATAN");
+        jLabel3.setText("KOTA ASAL");
 
-        nim.setFont(new java.awt.Font("KG Second Chances Solid", 0, 11)); // NOI18N
+        Nama.setFont(new java.awt.Font("KG Second Chances Solid", 0, 11)); // NOI18N
 
-        nama.setFont(new java.awt.Font("KG Second Chances Solid", 0, 11)); // NOI18N
+        tlp.setFont(new java.awt.Font("KG Second Chances Solid", 0, 11)); // NOI18N
 
-        angkatan.setFont(new java.awt.Font("KG Second Chances Solid", 0, 11)); // NOI18N
-        angkatan.setForeground(new java.awt.Color(102, 102, 102));
-        angkatan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2013", "2014", "2015", "2016" }));
+        asal.setFont(new java.awt.Font("KG Second Chances Solid", 0, 11)); // NOI18N
+        asal.setForeground(new java.awt.Color(102, 102, 102));
+        asal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Samarinda", "Malang", "Balikpapan", "Jombang", "Jakarta" }));
 
         tabel.setFont(new java.awt.Font("KG Second Chances Solid", 0, 11)); // NOI18N
         tabel.setForeground(new java.awt.Color(153, 153, 153));
@@ -204,15 +204,15 @@ public void InitTable(){
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel1)
-                                            .addComponent(nim, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(Nama, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel2)
-                                            .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(tlp, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel3)
-                                            .addComponent(angkatan, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(asal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -227,12 +227,12 @@ public void InitTable(){
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(angkatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tlp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(asal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ulangi)
@@ -298,15 +298,15 @@ public void InitTable(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
-       nim.setEditable(true);
-       nama.setEditable(true);
-       angkatan.setEditable(true);
+       Nama.setEditable(true);
+       tlp.setEditable(true);
+       asal.setEditable(true);
        
        update.setEnabled(true);
        hapus.setEnabled(true);
-       nama.setEditable(true);
-       nim.setEditable(true);
-       angkatan.setEditable(true);
+       tlp.setEditable(true);
+       Nama.setEditable(true);
+       asal.setEditable(true);
        ulangi.setEnabled(true);
        hapus.setEnabled(true);
        clear.setEnabled(true);
@@ -324,18 +324,18 @@ public void InitTable(){
        String nama_edit=tabel.getValueAt(baris, 1).toString();
        String angka_edit=tabel.getValueAt(baris, 2).toString();
        
-       nim.setText(nim_edit);
-       nama.setText(nama_edit);
-       angkatan.setSelectedItem(angka_edit);
+       Nama.setText(nim_edit);
+       tlp.setText(nama_edit);
+       asal.setSelectedItem(angka_edit);
     }//GEN-LAST:event_tabelMouseClicked
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         try {
              int baris=tabel.getSelectedRow();
      
-       tabel.setValueAt(nim.getText(),baris, 0);
-      tabel.setValueAt(nama.getText(), baris, 1);
-      tabel.setValueAt(angkatan.getSelectedItem(), baris, 2);
+       tabel.setValueAt(Nama.getText(),baris, 0);
+      tabel.setValueAt(tlp.getText(), baris, 1);
+      tabel.setValueAt(asal.getSelectedItem(), baris, 2);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Belum ada data yang dipilih");
         }
@@ -355,14 +355,23 @@ public void InitTable(){
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
        model.getDataVector().removeAllElements();
        model.fireTableDataChanged();
-       nim.requestFocus();
+       Nama.requestFocus();
+       update.setEnabled(false);
+       hapus.setEnabled(false);
+       tlp.setEditable(false);
+       Nama.setEditable(false);
+       asal.setEditable(false);
+       ulangi.setEnabled(false);
+       hapus.setEnabled(false);
+       clear.setEnabled(false);
+       simpan.setEnabled(false);
     }//GEN-LAST:event_clearActionPerformed
 
     private void ulangiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ulangiActionPerformed
-       nim.setText("");
-        nama.setText("");
-        angkatan.setSelectedItem("2013");
-        nim.requestFocus();
+       Nama.setText("");
+        tlp.setText("");
+        asal.setSelectedItem("2013");
+        Nama.requestFocus();
     }//GEN-LAST:event_ulangiActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -372,9 +381,9 @@ public void InitTable(){
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
        update.setEnabled(false);
        hapus.setEnabled(false);
-       nama.setEditable(false);
-       nim.setEditable(false);
-       angkatan.setEditable(false);
+       tlp.setEditable(false);
+       Nama.setEditable(false);
+       asal.setEditable(false);
        ulangi.setEnabled(false);
        hapus.setEnabled(false);
        clear.setEnabled(false);
@@ -382,13 +391,21 @@ public void InitTable(){
     }//GEN-LAST:event_formWindowOpened
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
-      Object[] data= new Object[3];
-       data[0]=nim.getText();
-       data[1]=nama.getText();
-       data[2]=angkatan.getSelectedItem().toString();
+      if(Nama.getText().equals("")||tlp.getText().equals("")){
+          JOptionPane.showMessageDialog(null,"Inputan Tidak Bisa Kosong");
+      }
+      else{
+        Object[] data= new Object[3];
+       data[0]=Nama.getText();
+       data[1]=tlp.getText();
+       data[2]=asal.getSelectedItem().toString();
        model.addRow(data);
        
        simpan.setEnabled(false);
+       Nama.requestFocus();
+       Nama.setText("");
+       tlp.setText("");    
+      }
     }//GEN-LAST:event_simpanActionPerformed
 
     /**
@@ -427,7 +444,8 @@ public void InitTable(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox angkatan;
+    private javax.swing.JTextField Nama;
+    private javax.swing.JComboBox asal;
     private javax.swing.JButton clear;
     private javax.swing.JButton hapus;
     private javax.swing.JButton jButton1;
@@ -439,11 +457,10 @@ public void InitTable(){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nama;
-    private javax.swing.JTextField nim;
     private javax.swing.JButton simpan;
     private javax.swing.JTable tabel;
     private javax.swing.JButton tambah;
+    private javax.swing.JTextField tlp;
     private javax.swing.JButton ulangi;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
