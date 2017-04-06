@@ -365,12 +365,16 @@ public void InitTable(){
        hapus.setEnabled(false);
        clear.setEnabled(false);
        simpan.setEnabled(false);
+       
+       Nama.setText("");
+        tlp.setText("");
+        asal.setSelectedItem(null);
     }//GEN-LAST:event_clearActionPerformed
 
     private void ulangiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ulangiActionPerformed
        Nama.setText("");
         tlp.setText("");
-        asal.setSelectedItem("2013");
+        asal.setSelectedItem(null);
         Nama.requestFocus();
     }//GEN-LAST:event_ulangiActionPerformed
 
@@ -388,6 +392,7 @@ public void InitTable(){
        hapus.setEnabled(false);
        clear.setEnabled(false);
        simpan.setEnabled(false);
+       asal.setSelectedItem(null);
     }//GEN-LAST:event_formWindowOpened
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
@@ -404,7 +409,8 @@ public void InitTable(){
        simpan.setEnabled(false);
        Nama.requestFocus();
        Nama.setText("");
-       tlp.setText("");    
+       tlp.setText("");
+       asal.setSelectedItem(null);
       }
     }//GEN-LAST:event_simpanActionPerformed
 
