@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tugas6;
+package Tugas7;
 
+import Tugas6.*;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -87,13 +88,13 @@ private boolean cek=true;
     }
     private void validasidata(String jud, String nulis, String price) {//disini adalah sisi validasi dimana setiap data judul dan penulis yang masuk di huruf kecilkan
         try{
-            String sql ="SELECT *FROM buku";
-            stt = con.createStatement();
-            ResultSet rss = stt.executeQuery(sql);
+            String sql ="SELECT *FROM buku";//kita menampilkan dulu buku kemudian
+            stt = con.createStatement();//variabel menampung dari sql yang udah ditentukan
+            ResultSet rss = stt.executeQuery(sql);//variable penampung eksekusi pada sql
             while(rss.next()){
-                Object[] o = new Object[2];
+                Object[] o = new Object[2];//membuat objek baru
                 o[0]=rss.getString("judul").toLowerCase();//disini adalah sisi dimana objek yang baru di masukkan dengan huruf kecil
-                o[1]=rss.getString("penulis").toLowerCase();
+                o[1]=rss.getString("penulis").toLowerCase();//disini adalah sisi objek dimana mendapati tulisan dengan masukkan dibandingkan dengan sql yang sudah di huruf kecilkan
                 
                 if(o[0].equals(jud.toLowerCase())&&o[1].equals(nulis.toLowerCase())){
                     JOptionPane.showMessageDialog(null,"DATA TELAH ADA");//untuk membandingkan dan mencegah data duplikat dimana judul dan pengarang yang sama berada di database yang sama maka jika nama pengarang dan judul yang sama maka akan muncul pemberitahuan bahwa data telah ada 
@@ -108,69 +109,17 @@ private boolean cek=true;
             System.out.println(e.getMessage());
         }//jadi sebelum menyimpan data ada method validasi ini dimana gunanya mengecek dulu apakah sudah ada judul dan pengarang yang sama jika suddah ada maka data tidak bisa tersimpan tapi jika tidak ada buku yang kondisinya nama dan pengarang sama maka data akan tersimpan
     }
-    private void caridatajud(){//disini saya membuat method untuk mencari judul dimana akan menampilkan data berdasarkan judul yang sama 
-        try{
-            String ini = cari.getText().toLowerCase();//apa yang diketikkan pda field cari akan di lowercase kan 
-            String sql ="SELECT *FROM buku where judul='"+ini+"'";
+    private void caridata(String itu,String ini){//disini saya membuat method untuk mencari judul dimana akan menampilkan data berdasarkan judul yang sama 
+         try{
+            //apa yang diketikkan pda field cari akan di lowercase kan 
+            String sql ="SELECT *FROM buku where "+itu+" LIKE '%"+ini+"%'";
             stt = con.createStatement();
             ResultSet rss = stt.executeQuery(sql);
             while(rss.next()){
                 Object[] o =new Object[4];
                 o[0]=rss.getInt("id_buku");
                 o[1]=rss.getString("JUDUL").toLowerCase();//dari sisi judul pun juga akan mengecilkan huruf yang ada sehingga akan membandingkan sesama huruf kecil dan akan tetep ketemu biarpun beda kecilnya berbeda
-                o[2]=rss.getString("PENULIS");
-                o[3]=rss.getInt("HARGA");
-                model.addRow(o);
-            }
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-        }
-    }
-    private void caridataharga(){//method data harga mencarii berdasarkan harga yang kita ketikkan pada field cari 
-        try{
-            String sql ="SELECT *FROM buku where harga='"+cari.getText()+"'";
-            stt = con.createStatement();
-            ResultSet rss = stt.executeQuery(sql);
-            while(rss.next()){
-                Object[] o =new Object[4];
-                o[0]=rss.getInt("id_buku");
-                o[1]=rss.getString("JUDUL");
-                o[2]=rss.getString("PENULIS");
-                o[3]=rss.getInt("HARGA");
-                model.addRow(o);
-            }
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-        }
-    }
-    private void caridatanulis(){//dari sisi penulis sama seperti judul tadi dia akan mengecilkan huruf yang ada di field cari dan di ddatabase yang ada 
-        try{
-            String ini = cari.getText().toLowerCase();
-            String sql ="SELECT *FROM buku where penulis='"+ini+"'";
-            stt = con.createStatement();
-            ResultSet rss = stt.executeQuery(sql);
-            while(rss.next()){
-                Object[] o =new Object[4];
-                o[0]=rss.getInt("id_buku");
-                o[1]=rss.getString("JUDUL");
                 o[2]=rss.getString("PENULIS").toLowerCase();
-                o[3]=rss.getInt("HARGA");
-                model.addRow(o);
-            }
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-        }
-    }
-    private void caridataid(){//dari data berdasarkan id yang ada.
-        try{
-            String sql ="SELECT *FROM buku where id_buku='"+cari.getText()+"'";
-            stt = con.createStatement();
-            ResultSet rss = stt.executeQuery(sql);
-            while(rss.next()){
-                Object[] o =new Object[4];
-                o[0]=rss.getInt("id_buku");
-                o[1]=rss.getString("JUDUL");
-                o[2]=rss.getString("PENULIS");
                 o[3]=rss.getInt("HARGA");
                 model.addRow(o);
             }
@@ -593,22 +542,9 @@ private boolean cek=true;
              JOptionPane.showMessageDialog(null,"MAU CARI APA ?","WARNING!!",JOptionPane.INFORMATION_MESSAGE);
          }
         else{
-            //jika sudah terisi maka akan ada perintah perintah lainnya berupa menghapus semua elemen pada table dan menampilkan data yang bersangkutan
-        model.getDataVector().removeAllElements();
+            model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
-        if(by.getSelectedItem().equals("ID")){
-            //ketika combobox memilih id maka akan menulusuri berdasarkan id begitu uga seterusnya
-            caridataid();
-        }
-        else if(by.getSelectedItem().equals("Penulis")){
-            caridatanulis();
-        }
-         else if(by.getSelectedItem().equals("Judul")){
-            caridatajud();
-        }
-         else{
-             caridataharga();
-         }
+      caridata(by.getSelectedItem().toString(),cari.getText().toLowerCase());
         }
         
     }//GEN-LAST:event_searchActionPerformed
@@ -648,6 +584,7 @@ private boolean cek=true;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(formdatabuku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
